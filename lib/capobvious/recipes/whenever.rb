@@ -3,7 +3,7 @@ Capistrano::Configuration.instance(:must_exist).load do
     set :whenever_command, "bundle exec whenever"
     set :whenever_environment, defer { stage }
     set :whenever_identifier, defer { "#{application}_#{stage}" }
-    require "whenever/capistrano/recipes"
+    require "whenever/capistrano"
     after "bundle:install", "whenever:update_crontab"
     after "deploy:rollback", "whenever:update_crontab"
   end
